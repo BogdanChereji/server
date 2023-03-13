@@ -32,14 +32,14 @@ app.get('/', (req, res) => {
   res.send('Api is runing..');
 });
 
-app.use('https://iqrserver.onrender.com/api/seed', seedRouter);
-app.use('https://iqrserver.onrender.com/api/angajati', angajatRouter);
-app.use('https://iqrserver.onrender.com/api/clienti', clientRouter);
-app.use('https://iqrserver.onrender.com/api/servici', serviciRouter);
-app.use('https://iqrserver.onrender.com/api/echipamente', echipamentRouter);
-app.use('https://iqrserver.onrender.com/api/users', userRouter);
-app.use('https://iqrserver.onrender.com/api/pontaje', pontajRouter);
-app.use('https://iqrserver.onrender.com/api/infos', infoRouter);
+app.use('/api/seed', seedRouter);
+app.use('/api/angajati', angajatRouter);
+app.use('/api/clienti', clientRouter);
+app.use('/api/servici', serviciRouter);
+app.use('/api/echipamente', echipamentRouter);
+app.use('/api/users', userRouter);
+app.use('/api/pontaje', pontajRouter);
+app.use('/api/infos', infoRouter);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
