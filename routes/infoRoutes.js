@@ -40,6 +40,7 @@ infoRouter.get(
           _id: {
             $dateToString: { format: '%m-%Y', date: '$data' },
           },
+          numOre: 0,
           numOre: { $sum: '$timp' },
         },
       },
