@@ -10,7 +10,7 @@ const pontajSchema = new mongoose.Schema(
     timp: { type: Number, required: true },
     distanta: { type: Number, required: true },
     comentariu: { type: String },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },
   {
     timestamps: true,
