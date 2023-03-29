@@ -23,7 +23,7 @@ pontajRouter.post(
       timp: req.body.timp,
       distanta: req.body.distanta,
       comentariu: req.body.comentariu,
-      user: req.user._id,
+      user: req.body.user,
     });
     const pontaj = await newPontaj.save();
     res.status(201).send({ message: 'Pontajul a fost creat', pontaj });
@@ -45,7 +45,8 @@ pontajRouter.put(
         (pontaj.timp = req.body.timp),
         (pontaj.distanta = req.body.distanta),
         (pontaj.comentariu = req.body.comentariu),
-        await pontaj.save();
+        (pontaj.userCheck = req.body.userCheck);
+      await pontaj.save();
       res.send({ message: 'Înregistrarea a fost actualizată' });
     } else {
       res.status(404).send({ message: 'Pontajul nu a fost găsit' });
