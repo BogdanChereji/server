@@ -12,6 +12,7 @@ import echipamentRouter from './routes/echipamentRoutes.js';
 import pontajRouter from './routes/pontajRoutes.js';
 import infoRouter from './routes/infoRoutes.js';
 import stocRouter from './routes/stocRoutes.js';
+
 dotenv.config();
 
 mongoose.set('strictQuery', false);
@@ -27,12 +28,14 @@ mongoose
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(
   cors({
-    origin: '*', // Permite orice origine pentru testare
+    origin: '*', // Pentru testare – în producție setează domeniul frontendului
     credentials: true,
   })
 );
+
 app.get('/', (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.send('Api is runing..');
@@ -53,6 +56,6 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Serve at http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Serve at http://0.0.0.0:${port}`);
 });
