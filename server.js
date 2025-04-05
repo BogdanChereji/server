@@ -11,6 +11,7 @@ import serviciRouter from './routes/serviciRoutes.js';
 import echipamentRouter from './routes/echipamentRoutes.js';
 import pontajRouter from './routes/pontajRoutes.js';
 import infoRouter from './routes/infoRoutes.js';
+import stocRouter from './routes/stocRoutes.js';
 dotenv.config();
 
 mongoose.set('strictQuery', false);
@@ -26,7 +27,12 @@ mongoose
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: '*', // Permite orice origine pentru testare
+    credentials: true,
+  })
+);
 app.get('/', (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.send('Api is runing..');
@@ -35,6 +41,7 @@ app.get('/', (req, res) => {
 app.use('/api/seed', seedRouter);
 app.use('/api/angajati', angajatRouter);
 app.use('/api/clienti', clientRouter);
+app.use('/api/stocuri', stocRouter);
 app.use('/api/servici', serviciRouter);
 app.use('/api/echipamente', echipamentRouter);
 app.use('/api/users', userRouter);
